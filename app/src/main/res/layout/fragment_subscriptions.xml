@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/login_background"
+    tools:context="com.example.kudzai.app21.createSubscription">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="Record Subscription"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="8dp"
+        android:text="Date"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/edsubtxtDate"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.428" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toStartOf="@+id/btnShow"
+        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnShow" />
+
+    <Button
+        android:id="@+id/btnShow"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="60dp"
+        android:text="Show"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtReference" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
+        android:text="Full Name"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtFullname"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtxtFullname"
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edsubtxtDate"
+        app:layout_constraintTop_toBottomOf="@+id/edsubtxtDate" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="District"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtDistrict"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtxtDistrict" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Amount"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtAmnt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtxtAmnt" />
+
+    <EditText
+        android:id="@+id/edtxtAmnt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/edtxtDistrict"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtDistrict" />
+
+    <EditText
+        android:id="@+id/edtxtPurpose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edtxtAmnt"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtAmnt" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Purpose"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtPurpose"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtxtPurpose" />
+
+    <EditText
+        android:id="@+id/edtxtDistrict"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/edtxtFullname"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtFullname" />
+
+    <EditText
+        android:id="@+id/edsubtxtDate"
+        android:layout_width="217dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="8dp"
+        android:text="Pay Mode"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/chckCash"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chckCash" />
+
+    <EditText
+        android:id="@+id/edtxtReference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chckEcocash" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Reference"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtReference"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edtxtReference" />
+
+    <CheckBox
+        android:id="@+id/chckCash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:text="Cash"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/chckEcocash"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="@+id/edtxtPurpose"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtPurpose" />
+
+    <CheckBox
+        android:id="@+id/chckEcocash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Ecocash"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/chckBank"
+        app:layout_constraintTop_toTopOf="@+id/chckCash" />
+
+    <CheckBox
+        android:id="@+id/chckBank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bank"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtxtPurpose"
+        app:layout_constraintTop_toTopOf="@+id/chckEcocash" />
+
+</android.support.constraint.ConstraintLayout>
