@@ -1,10 +1,8 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +12,7 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class AdminPortal extends AppCompatActivity {
-    DatabaseHelper myDb;
+    Db_Operations myDb;
     EditText editText5,editText9,editText12 ;
     EditText myid,myname,myemail,mypassword ;
     Button btnAddUser,btnView ,btndelete,btnUpdate;
@@ -25,7 +23,7 @@ public class AdminPortal extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_portal);
-        myDb = new DatabaseHelper(this);
+        myDb = new Db_Operations(this);
 
         myid = (EditText)findViewById(R.id.editText13);
         myname = (EditText)findViewById(R.id.editText5);

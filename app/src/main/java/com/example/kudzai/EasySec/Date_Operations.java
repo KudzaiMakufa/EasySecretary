@@ -1,11 +1,13 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.TimeZone;
 
 public class Date_Operations {
@@ -33,5 +35,13 @@ public class Date_Operations {
         DatePickerDialog dialog =
                 new DatePickerDialog(theclass , dpd, mYear, mMonth, mDay);
         dialog.show();
+    }
+
+    public String GetCurrentTimeAndDate(){
+
+
+       String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+       return currentDateTimeString;
+
     }
 }

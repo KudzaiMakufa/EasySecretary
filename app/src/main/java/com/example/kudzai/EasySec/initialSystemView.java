@@ -1,4 +1,4 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -44,7 +44,7 @@ public class initialSystemView extends AppCompatActivity {
     private static Button btnShowExp, btnShowSubs,btnbSub;
     private static TextView  nill ;
     private static EditText editText ,editTextexp,txtAmount ,txtDescription,Fullname , txtdistrict, txtamount , txtpurpose ,txtreference ,datefrom,dateto;
-    private static DatabaseHelper myDb ;
+    private static Db_Operations myDb ;
     private static CheckBox cash , ecocash ,bank ;
     private static Button insert , viewexp ,CreatePdf,btnView,btnsettle;
     private static Spinner spnType,spnTyped ;
@@ -243,7 +243,7 @@ public class initialSystemView extends AppCompatActivity {
 
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1){
 
-                myDb = new DatabaseHelper(getActivity());
+                myDb = new Db_Operations(getActivity());
 
 
 
@@ -271,6 +271,27 @@ public class initialSystemView extends AppCompatActivity {
 
                     }
                 });
+
+               /* if(cash.isChecked() == true ){
+                    ecocash.setChecked(false);
+                    bank.setChecked(false);
+
+                    Toast.makeText(getActivity(), "waaat", Toast.LENGTH_LONG).show();
+                }
+                else if(ecocash.isChecked() == true ){
+                    cash.setChecked(false);
+                    bank.setChecked(false);
+                    // Toast.makeText(createSubscription.this, "EcoCash", Toast.LENGTH_LONG).show();
+                }
+                else if(bank.isChecked() == true ){
+
+                    ecocash.setChecked(false);
+                    cash.setChecked(false);
+                    //Toast.makeText(createSubscription.this, "bank", Toast.LENGTH_LONG).show();
+                }
+                else{
+
+                }*/
 
 
 
@@ -387,7 +408,7 @@ public class initialSystemView extends AppCompatActivity {
 
             else if(getArguments().getInt(ARG_SECTION_NUMBER) == 2) {
 
-                myDb = new DatabaseHelper(getActivity());
+                myDb = new Db_Operations(getActivity());
 
                 View rootView = inflater.inflate(R.layout.fragment_expenses, container, false);
 
@@ -483,7 +504,7 @@ public class initialSystemView extends AppCompatActivity {
                   */
 
 
-                myDb = new DatabaseHelper(getActivity());
+                myDb = new Db_Operations(getActivity());
                 spnType = (Spinner)rootView.findViewById(R.id.spinnerType);
                 final TextView txtExpense = (TextView)rootView.findViewById(R.id.txtViewExp);
                 final TextView txtSubscriptions = (TextView)rootView.findViewById(R.id.txtSub);
@@ -740,12 +761,50 @@ public class initialSystemView extends AppCompatActivity {
 
                 CreatePdf  = (Button)rootView.findViewById(R.id.btnPrintPdf);
                 CreatePdf.setOnClickListener(new View.OnClickListener() {
+
+
                     @Override
                     public void onClick(View v) {
-                        //Intent intent = new Intent(".PrintTesting");
-                        Intent intent = new Intent(".MainListView");
 
-                        startActivity(intent);
+
+
+                        // setup the alert builder
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Print Options");
+
+                        // add a list
+                        String[] printOptions = {"Summarized statement ", "Subscriptions", "Expenses", "Cancel"};
+
+                        builder.setItems(printOptions, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                switch (which) {
+                                    case 0:
+                                        Pdf_Op_Method pdfop = new Pdf_Op_Method();
+                                        pdfop.createPdf(getActivity());
+
+                                        break;
+
+                                    case 1:
+
+
+
+                                        Toast.makeText(getActivity(),"Subs",Toast.LENGTH_SHORT).show();
+
+                                    case 2:
+                                        Toast.makeText(getActivity(),"exp",Toast.LENGTH_SHORT).show();
+                                    case 3:
+                                        dialog.cancel();
+                                        break;
+
+                                }
+                            }
+                        });
+
+                        // create and show the alert dialog
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+
 
                     }
                 });

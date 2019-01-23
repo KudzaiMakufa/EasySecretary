@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/login_background"
-    tools:context="com.example.kudzai.app21.MainActivity"
+    tools:context="com.example.kudzai.EasySec.MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
     <Button

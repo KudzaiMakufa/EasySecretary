@@ -1,16 +1,15 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.EditText;
 
 /**
  * Created by ProgrammingKnowledge on 4/3/2015.
  */
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class Db_Operations extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Zaoga.db";
     public static final String TABLE_NAME = "Users";
     public static final String TABLE_NAME2 = "Expenses";
@@ -22,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_5 = "USER_TYPE";
 
 
-    public DatabaseHelper(Context context) {
+    public Db_Operations(Context context) {
         super(context, DATABASE_NAME, null, 7);
     }
 

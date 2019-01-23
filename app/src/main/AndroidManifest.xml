@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.kudzai.app21">
+    package="com.example.kudzai.EasySec">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main"
+            android:name="com.example.kudzai.EasySec.Main"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,57 +20,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowSubscriptions">
+        <activity android:name="com.example.kudzai.EasySec.ShowSubscriptions">
             <intent-filter>
                 <action android:name=".ShowSubscriptions" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowExpenses">
+        <activity android:name="com.example.kudzai.EasySec.ShowExpenses">
             <intent-filter>
                 <action android:name=".ShowExpenses" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminPortal">
+        <activity android:name="com.example.kudzai.EasySec.AdminPortal">
             <intent-filter>
                 <action android:name=".AdminPortal" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Manage">
+        <activity android:name="com.example.kudzai.EasySec.Manage">
             <intent-filter>
                 <action android:name=".Manage" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeScreen">
+        <activity android:name="com.example.kudzai.EasySec.WelcomeScreen">
             <intent-filter>
                 <action android:name=".WelcomeScreen" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.kudzai.EasySec.MainActivity">
             <intent-filter>
                 <action android:name=".MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Pdf_Operations">
-            <intent-filter>
-                <action android:name=".Pdf_Operations" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".initialSystemView"
+            android:name="com.example.kudzai.EasySec.initialSystemView"
             android:label="@string/title_activity_initial_system_view"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -79,25 +72,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".adminFromSettings">
+        <activity android:name="com.example.kudzai.EasySec.adminFromSettings">
             <intent-filter>
                 <action android:name=".adminFromSettings" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".PrintTesting">
-            <intent-filter>
-                <action android:name=".PrintTesting" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".ViewListContents" />
-        <activity android:name=".MainListView">
-
-            <intent-filter>
-                <action android:name=".MainListView" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

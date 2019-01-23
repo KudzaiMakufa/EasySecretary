@@ -1,30 +1,20 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.app.AlertDialog;
 import android.database.Cursor;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
-    DatabaseHelper myDb;
+    Db_Operations myDb;
 
     private static Button  buttonLogin ;
 
@@ -34,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myDb = new DatabaseHelper(this);
+        myDb = new Db_Operations(this);
 
 
 

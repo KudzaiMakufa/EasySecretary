@@ -1,4 +1,4 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.content.Intent;
 import android.content.SharedPreferences;

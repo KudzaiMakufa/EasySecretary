@@ -1,4 +1,4 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -18,7 +18,7 @@ import android.widget.Toast;
 import static java.lang.Integer.parseInt;
 
 public class Manage extends AppCompatActivity {
-    DatabaseHelper myDb;
+    Db_Operations myDb;
     Spinner spnType,spnTyped ;
     Button CreatePdf,btnView,btnsettle;
     EditText datefrom,dateto;
@@ -34,7 +34,7 @@ public class Manage extends AppCompatActivity {
 
 
     public void ManageMent(){
-        myDb = new DatabaseHelper(this);
+        myDb = new Db_Operations(this);
         spnType = (Spinner)findViewById(R.id.spinnerType);
         final TextView txtExpense = (TextView)findViewById(R.id.txtViewExp);
         final TextView txtSubscriptions = (TextView)findViewById(R.id.txtSub);

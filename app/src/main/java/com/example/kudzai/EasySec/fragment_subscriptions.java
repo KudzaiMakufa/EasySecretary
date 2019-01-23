@@ -1,4 +1,4 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.content.Context;
 import android.net.Uri;

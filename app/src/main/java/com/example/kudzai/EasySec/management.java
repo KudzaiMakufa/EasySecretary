@@ -1,44 +1,23 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import static java.lang.Integer.parseInt;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link fragment_expenses.OnFragmentInteractionListener} interface
+ * {@link management.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link fragment_expenses#newInstance} factory method to
+ * Use the {@link management#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class fragment_expenses extends Fragment {
-
-    DatabaseHelper myDb;
-
-    Activity reference;
-    View parentholder;
-    private static TextView txtAmount , txtDescription ,txttile;
-    private static EditText editText;
-    private static Button btnView;
-    
-
-
-
-
+public class management extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -50,7 +29,7 @@ public class fragment_expenses extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public fragment_expenses() {
+    public management() {
         // Required empty public constructor
     }
 
@@ -60,11 +39,11 @@ public class fragment_expenses extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment fragment_expenses.
+     * @return A new instance of fragment management.
      */
     // TODO: Rename and change types and number of parameters
-    public static fragment_expenses newInstance(String param1, String param2) {
-        fragment_expenses fragment = new fragment_expenses();
+    public static management newInstance(String param1, String param2) {
+        management fragment = new management();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -84,12 +63,8 @@ public class fragment_expenses extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-
-        return inflater.inflate(R.layout.fragment_expenses, container, false);
-
-
-
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_management, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -130,5 +105,4 @@ public class fragment_expenses extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.kudzai.app21;
+package com.example.kudzai.EasySec;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,12 +16,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class ShowSubscriptions extends AppCompatActivity {
-    DatabaseHelper myDb;
+    Db_Operations myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_subscriptions);
-        myDb = new DatabaseHelper(this);
+        myDb = new Db_Operations(this);
         ViewSubcriptionDetails();
     }
 
