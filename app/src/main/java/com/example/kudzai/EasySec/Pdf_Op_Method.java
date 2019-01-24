@@ -46,7 +46,7 @@ public class Pdf_Op_Method {
 
 
         // Create Page 2
-        pageInfo = new PdfDocument.PageInfo.Builder(500, 500, 1).create();
+        pageInfo = new PdfDocument.PageInfo.Builder(500, 600, 1).create();
         page = document.startPage(pageInfo);
         canvas = page.getCanvas();
         paint = new Paint();
@@ -100,7 +100,7 @@ public class Pdf_Op_Method {
 
         // write the document content
         File folder = new File(Environment.getExternalStorageDirectory() +
-                File.separator + "EasySecretary");
+                File.separator + "EasySecretary/Income Expenditure/");
         boolean success = true;
         if (!folder.exists()) {
             success = folder.mkdirs();
@@ -116,7 +116,8 @@ public class Pdf_Op_Method {
         String currenttime = dateOp.GetCurrentTimeAndDate();
 
 
-        String targetPdf = "/sdcard/EasySecretary/Income and Expenditure '"+currenttime+"'.pdf";
+        //String targetPdf = "/sdcard/EasySecretary/Income and Expenditure '"+currenttime+"'.pdf";
+        String targetPdf = "/sdcard/EasySecretary/Income Expenditure/Income and Expenditure "+currenttime+".pdf";
         File filePath = new File(targetPdf);
         try {
             document.writeTo(new FileOutputStream(filePath));
@@ -129,10 +130,30 @@ public class Pdf_Op_Method {
 
         // close the document
         document.close();
+
     }
 
 
-    public void printalldata(String tablename, Canvas canvas, Paint paint) {
+    public void printallSubOrExp(Context context , String tablename) {
+        myDb = new Db_Operations(context);
+
+
+        // create a new document
+        PdfDocument document = new PdfDocument();
+
+        // crate a page description
+        PdfDocument.PageInfo pageInfo =
+                new PdfDocument.PageInfo.Builder(500, 500, 1).create();
+
+        // start a page
+        PdfDocument.Page page = document.startPage(pageInfo);
+
+        Canvas canvas = page.getCanvas();
+
+        canvas = page.getCanvas();
+
+        Paint paint = new Paint();
+        paint.setColor(Color.CYAN);
 
         Cursor res = myDb.getAllData(tablename);
         int y = 30;
@@ -177,7 +198,43 @@ public class Pdf_Op_Method {
 
 
         }
+        // finish the page
+        document.finishPage(page);
+
+        // write the document content
+        File folder = new File(Environment.getExternalStorageDirectory() +
+                File.separator + "EasySecretary/"+tablename+"");
+        boolean success = true;
+        if (!folder.exists()) {
+            success = folder.mkdirs();
+        }
+        if (success) {
+            // Do something on success
+        } else {
+            // Do something else on failure
+        }
+        //appending cuurent timestamp to my generated file
+
+        Date_Operations dateOp = new Date_Operations();
+        String currenttime = dateOp.GetCurrentTimeAndDate();
+
+
+        //String targetPdf = "/sdcard/EasySecretary/Income and Expenditure '"+currenttime+"'.pdf";
+        String targetPdf = "/sdcard/EasySecretary/"+tablename+"/"+tablename+""+currenttime+".pdf";
+        File filePath = new File(targetPdf);
+        try {
+            document.writeTo(new FileOutputStream(filePath));
+            Toast.makeText(context, "Pdf stored in \n " + targetPdf, Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(context, "Something wrong: " + e.toString(),
+                    Toast.LENGTH_LONG).show();
+        }
+
+        // close the document
+        document.close();
     }
+
 
 
 }

@@ -3,7 +3,12 @@ package com.example.kudzai.EasySec;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.support.design.widget.TabLayout;
@@ -36,6 +41,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
+import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
@@ -48,7 +54,8 @@ public class initialSystemView extends AppCompatActivity {
     private static CheckBox cash , ecocash ,bank ;
     private static Button insert , viewexp ,CreatePdf,btnView,btnsettle;
     private static Spinner spnType,spnTyped ;
-
+    private static final int CHOOSE_FILE_REQUESTCODE = 8777;
+    //private static final int PICKFILE_RESULT_CODE = 8778;
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -147,6 +154,7 @@ public class initialSystemView extends AppCompatActivity {
 
         }
         else if(id == R.id.action_backup){
+
             final String SAMPLE_DB_NAME = "Zaoga.db";
             AlertDialog.Builder alertWrong = new AlertDialog.Builder(initialSystemView.this);
 
@@ -158,17 +166,18 @@ public class initialSystemView extends AppCompatActivity {
                             File data = Environment.getDataDirectory();
                             FileChannel source=null;
                             FileChannel destination=null;
-                            String currentDBPath = "/data/"+ "com.example.kudzai.app21" +"/databases/"+SAMPLE_DB_NAME;
+                            String currentDBPath = "/data/"+ "com.example.kudzai.EasySec" +"/databases/"+SAMPLE_DB_NAME;
 
                             File folder = new File(Environment.getExternalStorageDirectory() +
-                                    File.separator + "EasySecretary");
+                                    File.separator + "EasySecretary/Backup");
                             boolean success = true;
                             if (!folder.exists()) {
                                 success = folder.mkdirs();
                             }
-
+                            Date_Operations dateop = new Date_Operations();
+                            String currenttime = dateop.GetCurrentTimeAndDate();
                             String backupDBPath = "" +
-                                    "/EasySecretary/SAMPLE_DB_NAME";
+                                    "EasySecretary/Backup/"+SAMPLE_DB_NAME+currenttime;
                             File currentDB = new File(data, currentDBPath);
                             File backupDB = new File(sd, backupDBPath);
                             try {
@@ -177,10 +186,13 @@ public class initialSystemView extends AppCompatActivity {
                                 destination.transferFrom(source, 0, source.size());
                                 source.close();
                                 destination.close();
-                                Toast.makeText(getApplicationContext(),"Your database has been exported",
+                                Toast.makeText(getApplicationContext(),"Backup Successful",
                                         Toast.LENGTH_LONG).show();
                             } catch(IOException e) {
                                 e.printStackTrace();
+
+                                Toast.makeText(getApplicationContext(),"failed",
+                                        Toast.LENGTH_LONG).show();
                             }
 
 
@@ -203,6 +215,12 @@ public class initialSystemView extends AppCompatActivity {
 
 
 
+        }
+        else if(id == R.id.action_report){
+
+            Intent intent2 = new Intent(Intent.ACTION_GET_CONTENT);
+            intent2.setType("file/*");
+            startActivityForResult(intent2, 8778);
         }
         else{
 
@@ -330,9 +348,24 @@ public class initialSystemView extends AppCompatActivity {
 
 
 
-                                if(paymode != null) {
+                                if(paymode == null) {
+
+                                    Toast.makeText(getActivity(), "Tick a pay mode Option", Toast.LENGTH_SHORT).show();
 
 
+
+
+
+
+
+
+                                }
+                                else if (Fullname.length() == 0 || txtdistrict.length() == 0 || txtpurpose.length() == 0){
+
+                                    Toast.makeText(getActivity(), "Fill in all the required input fields", Toast.LENGTH_SHORT).show();
+
+                                }
+                                else{
 
                                     try{
 
@@ -354,12 +387,6 @@ public class initialSystemView extends AppCompatActivity {
                                     }
 
 
-
-
-
-                                }
-                                else{
-                                    Toast.makeText(getActivity(), "Tick a pay mode Option", Toast.LENGTH_SHORT).show();
                                 }
 
                                 // Intent intent = new Intent(".ShowSubscriptions");
@@ -441,7 +468,7 @@ public class initialSystemView extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        if(txtAmount.length() == 0){
+                        if(txtAmount.length() == 0 || txtDescription.length() == 0 || editTextexp.length() == 0){
 
 
                             Toast.makeText(getActivity() , "Fill all required fields" ,Toast.LENGTH_SHORT).show();
@@ -778,21 +805,29 @@ public class initialSystemView extends AppCompatActivity {
                         builder.setItems(printOptions, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+
                                 switch (which) {
                                     case 0:
                                         Pdf_Op_Method pdfop = new Pdf_Op_Method();
                                         pdfop.createPdf(getActivity());
 
+                                        Intent intent = new Intent(Intent.ACTION_VIEW,
+                                                Uri.parse("/sdcard/EasySecretary/Income Expenditure/Income and Expenditure.pdf"));
+                                        intent.setType("application/pdf");
+
+                                        startActivity(intent);
+
+
                                         break;
 
                                     case 1:
+                                        Pdf_Op_Method pdfop1 = new Pdf_Op_Method();
+                                        pdfop1.printallSubOrExp(getActivity(),"Subscriptions");
 
-
-
-                                        Toast.makeText(getActivity(),"Subs",Toast.LENGTH_SHORT).show();
 
                                     case 2:
-                                        Toast.makeText(getActivity(),"exp",Toast.LENGTH_SHORT).show();
+                                        Pdf_Op_Method pdfop3 = new Pdf_Op_Method();
+                                        pdfop3.printallSubOrExp(getActivity(),"Expenses");
                                     case 3:
                                         dialog.cancel();
                                         break;
@@ -903,5 +938,6 @@ public class initialSystemView extends AppCompatActivity {
 
 
             // you need to check how you can make add data static and getActivity on context
+
 
 }

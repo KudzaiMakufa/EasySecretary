@@ -19,4 +19,9 @@
         android:orderInCategory="100"
         android:title="Backup Data"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_report"
+        android:orderInCategory="100"
+        android:title="Reports"
+        app:showAsAction="never" />
 </menu>
